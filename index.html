@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Profesional | Wilda Rahma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --pink-primary: #ff2e63;
+            --pink-light: #ff7597;
+            --black-deep: #080808;
+            --black-card: #1a1a1a;
+            --text-gray: #b0b0b0;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--black-deep);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: rgba(8, 8, 8, 0.9);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { font-weight: 700; color: var(--pink-primary); font-size: 1.5rem; }
+
+        /* --- HERO & DASHBOARD --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; color: var(--pink-primary); }
+        .hero p { max-width: 700px; color: var(--text-gray); margin-bottom: 30px; }
+
+        .dashboard-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .info-box {
+            background: var(--black-card);
+            padding: 20px;
+            border-radius: 12px;
+            border-bottom: 3px solid var(--pink-primary);
+        }
+
+        /* --- PROFILE IMAGE SECTION --- */
+        .profile-section {
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .image-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+        }
+
+        #profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--pink-primary);
+            box-shadow: 0 0 20px rgba(255, 46, 99, 0.4);
+        }
+
+        .upload-btn {
+            margin-top: 15px;
+            background: transparent;
+            border: 1px solid var(--pink-primary);
+            color: var(--pink-primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .upload-btn:hover { background: var(--pink-primary); color: white; }
+
+        /* --- CARDS & FORMS --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
+
+        .card {
+            background: var(--black-card);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .card h2 { color: var(--pink-primary); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .card .desc { color: var(--text-gray); margin-bottom: 25px; font-size: 0.9rem; }
+
+        /* --- BIO SECURITY OVERLAY --- */
+        .lock-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26, 26, 26, 0.98);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .btn-action {
+            background: var(--pink-primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        /* --- DATA STYLING --- */
+        .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .data-item { background: #252525; padding: 15px; border-radius: 10px; }
+        .label { color: var(--pink-primary); font-size: 0.8rem; display: block; }
+        .value { font-weight: 500; }
+
+        .tag-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag { background: #333; padding: 8px 18px; border-radius: 20px; border-left: 3px solid var(--pink-primary); }
+
+        footer { text-align: center; padding: 50px; border-top: 1px solid #333; color: var(--text-gray); }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">WR.</div>
+        <div class="menu-text"> Professional Portfolio</div>
+    </nav>
+
+    <header class="hero">
+        <h1>Wilda Rahma</h1>
+        <p>Selamat datang di portal informasi profesional saya. Website ini dirancang untuk memberikan gambaran komprehensif mengenai perjalanan akademik, keahlian teknis, dan pencapaian yang telah saya raih.</p>
+        
+        <div class="dashboard-info">
+            <div class="info-box">
+                <i class="fas fa-id-card"></i>
+                <h4>Biodata</h4>
+                <small>Data identitas personal dan status akademik.</small>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-graduation-cap"></i>
+                <h4>Edukasi</h4>
+                <small>Riwayat pendidikan formal dari dasar hingga tinggi.</small>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-trophy"></i>
+                <h4>Pencapaian</h4>
+                <small>Kumpulan prestasi dalam bidang sains dan seni.</small>
+            </div>
+        </div>
+        <a href="#main-content" class="btn-action" style="margin-top: 40px; text-decoration: none;">Eksplorasi Profil</a>
+    </header>
+
+    <div class="container" id="main-content">
+        
+        <section class="profile-section">
+            <div class="image-container">
+                <img id="profile-img" src="https://via.placeholder.com/200" alt="Wilda Rahma">
+            </div>
+            <input type="file" id="imageInput" style="display: none;" accept="image/*">
+            <button class="upload-btn" onclick="triggerImageUpload()">
+                <i class="fas fa-camera"></i> Ubah Foto Profil
+            </button>
+            <p style="font-size: 0.8rem; color: var(--text-gray); margin-top: 10px;">Foto tersimpan secara otomatis di perangkat Anda.</p>
+        </section>
+
+        <section class="card">
+            <div id="bio-lock" class="lock-overlay">
+                <i class="fas fa-user-shield" style="font-size: 3rem; color: var(--pink-primary); margin-bottom: 15px;"></i>
+                <h3>Konfirmasi Akses</h3>
+                <p>Informasi biodata bersifat pribadi. Klik tombol di bawah untuk melihat.</p>
+                <button class="btn-action" onclick="unlockBio()">Saya Setuju & Buka Data</button>
+            </div>
+            
+            <h2><i class="fas fa-address-book"></i> Biodata Pribadi</h2>
+            <p class="desc">Bagian ini berisi informasi dasar identitas, tanggal lahir, dan domisili.</p>
+            <div class="data-grid">
+                <div class="data-item">
+                    <span class="label">Nama Lengkap</span>
+                    <span class="value">Wilda Rahma </span>
+                </div>
+                <div class="data-item">
+                    <span class="label">Tempat, Tanggal Lahir</span>
+                    <span class="value">Sigli, 29 September 2001 </span>
+                </div>
+                <div class="data-item">
+                    <span class="label">Alamat</span>
+                    <span class="value">Gampong Jeumpa, Lamlo </span>
+                </div>
+                <div class="data-item">
+                    <span class="label">Status Saat Ini</span>
+                    <span class="value">Mahasiswa S1 Teknik Informatika </span>
+                </div>
+                <div class="data-item" style="grid-column: span 2;">
+                    <span class="label">Instansi</span>
+                    <span class="value">Universitas Jabal Ghafur </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-university"></i> Riwayat Pendidikan</h2>
+            <p class="desc">Rekam jejak pendidikan formal yang telah diselesaikan.</p>
+            <div class="data-grid">
+                <div class="data-item">
+                    <span class="label">Pendidikan Dasar</span>
+                    <span class="value">SD Negeri 8 Bebesen </span>
+                </div>
+                <div class="data-item">
+                    <span class="label">Pendidikan Menengah Pertama</span>
+                    <span class="value">SMP Negeri 4 Takengon </span>
+                </div>
+                <div class="data-item">
+                    <span class="label">Pendidikan Menengah Atas</span>
+                    <span class="value">SMA Negeri 1 Sakti </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2><i class="fas fa-award"></i> Pengalaman & Pencapaian</h2>
+            <p class="desc">Kumpulan prestasi, pengalaman organisasi, dan aktivitas di bidang sains dan seni.</p>
+            
+            <h4 style="margin: 20px 0 10px; color: var(--pink-light);">Prestasi Utama</h4>
+            <div class="tag-container">
+                <div class="tag">Juara 5 Putri Lingkungan</div>
+                <div class="tag">Juara 2 Lomba Melukis</div>
+                <div class="tag">Peserta Olimpiade Kimia </div>
+            </div>
+
+            <h4 style="margin: 30px 0 10px; color: var(--pink-light);">Organisasi & Aktivitas</h4>
+            <div class="data-grid">
+                <div class="data-item">
+                    <span class="label">Organisasi Sekolah</span>
+                    <span class="value">Bendahara OSIS Inti </span>
+                </div>
+                <div class="data-item">
+                    <span class="label">Kesenian</span>
+                    <span class="value">Aktif Seni Tari & Marching Band</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>2026 Wilda Rahma. Seluruh data disajikan secara profesional.</p>
+    </footer>
+
+    <script>
+        // FUNGSI UNLOCK BIODATA
+        function unlockBio() {
+            if(confirm("Apakah Anda yakin ingin menampilkan data pribadi?")) {
+                document.getElementById('bio-lock').style.display = 'none';
+            }
+        }
+
+        // FUNGSI FOTO (DENGAN LOCAL STORAGE & PERSETUJUAN)
+        const imageInput = document.getElementById('imageInput');
+        const profileImg = document.getElementById('profile-img');
+
+        // Muat foto saat halaman dibuka
+        window.onload = function() {
+            const savedImage = localStorage.getItem('userProfilePic');
+            if (savedImage) {
+                profileImg.src = savedImage;
+            }
+        };
+
+        function triggerImageUpload() {
+            if(confirm("Apakah Anda ingin mengubah foto profil?")) {
+                imageInput.click();
+            }
+        }
+
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const result = e.target.result;
+                    profileImg.src = result;
+                    localStorage.setItem('userProfilePic', result); // Simpan permanen
+                    alert("Foto profil berhasil diperbarui!");
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
